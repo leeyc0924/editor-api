@@ -63,7 +63,7 @@ router.post('/signup', async (req: Request, res: Response) => {
   } catch (error: any) {
     logUtil.error(error.toString());
 
-    res.status(404);
+    res.status(401).send();
   }
 });
 
@@ -123,7 +123,7 @@ router.post('/login', async (req: Request, res: Response) => {
   } catch (error: any) {
     logUtil.error(error.toString());
 
-    res.status(404);
+    res.status(401).send();
   }
 });
 
