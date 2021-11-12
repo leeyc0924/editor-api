@@ -43,6 +43,7 @@ router.post('/signup', async (req: Request, res: Response) => {
     let payload: any = {};
     payload.accountId = accountId;
     payload.accountNm = accountNm;
+    payload.permission = accountInfo.permission;
 
     const accessToken = await new Promise((resolve, reject) => {
       jwt.sign(payload, process.env.JWT_SECRET || '', { expiresIn: '1d' }, (err, token) => {
@@ -94,6 +95,7 @@ router.post('/login', async (req: Request, res: Response) => {
       const payload = {
         accountId: account.accountId,
         accountNm: account.accountNm,
+        permission: account.permission,
       };
 
       const accessToken = await new Promise((resolve, reject) => {
